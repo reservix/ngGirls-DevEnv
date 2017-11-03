@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ngGirls" do |ngGirls|
     ngGirls.vm.box = "ubuntu/xenial64"
     ngGirls.vm.hostname = 'ngGirls'
-    ngGirls.vm.network :private_network, ip: "192.168.33.25"
+    ngGirls.vm.network :private_network, ip: "10.5.23.42"
   end
 
   # install python
