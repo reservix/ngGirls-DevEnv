@@ -7,4 +7,4 @@ virtualbox:
 local:
   hosts:
     localhost:
-      connection: local
+      ansible_connection: local
