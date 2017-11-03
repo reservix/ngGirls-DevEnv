@@ -1,4 +1,4 @@
-# Vagrant for ngGirls Virtualbox Image
+# ngGirls Development Environment
 This Project is for bootstrapping the [ngGirls](http://ng-girls.org/) Development Environment.
 It creates a VirtualBox Image via vagrant and provisions all required software into the VM via ansible.
 
