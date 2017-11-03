@@ -11,7 +11,7 @@ It creates a VirtualBox Image via vagrant and provisions all required software i
 On Debian/Ubuntu you may just run the following commands:
 
 ```sh
-apt install vagrant virtualbox pip
+apt install vagrant virtualbox python-pip
 pip install ansible
 ```
 
