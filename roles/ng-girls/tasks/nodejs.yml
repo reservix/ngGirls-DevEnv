@@ -16,7 +16,7 @@
 # add gpg key for nodesource repository
 #------------------------------------------------------------------------------#
 
-  - name: nodejs | insert nodejs repository gpg key
+  - name: nodejs | add gpg key for nodejs repository
     apt_key:
       url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
       state: present
@@ -26,7 +26,7 @@
 # add nodesource repository
 #------------------------------------------------------------------------------#
 
-  - name: nodejs | install nodejs repository
+  - name: nodejs | add nodejs repository
     apt_repository:
       repo: deb https://deb.nodesource.com/node_7.x zesty main
       state: present

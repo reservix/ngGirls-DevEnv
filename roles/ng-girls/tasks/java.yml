@@ -4,7 +4,7 @@
 # add apt gpg key for webupd8team java repository
 #------------------------------------------------------------------------------#
 
-  - name: java | insert webupd8team key
+  - name: java | add gpg key for webupd8team repository
     apt_key:
       keyserver: keyserver.ubuntu.com
       id: 7B2C3B0889BF5709A105D03AC2518248EEA14886

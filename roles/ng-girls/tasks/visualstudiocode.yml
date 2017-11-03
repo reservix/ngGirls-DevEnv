@@ -4,7 +4,7 @@
 # add apt gpg key for visualstudiocode repository
 #------------------------------------------------------------------------------#
 
-  - name: visualstudiocode | add gpg key
+  - name: visualstudiocode | add gpg key for visualstudiocode repository
     apt_key:
       url: https://tagplus5.github.io/vscode-ppa/ubuntu/gpg.key
       id: 2EAC63DCD08F91047ABF92ADAD2CF5D3350E178B
@@ -14,7 +14,7 @@
 # add visualstudiocode repository
 #------------------------------------------------------------------------------#
 
-  - name: visualstudiocode | add repository
+  - name: visualstudiocode | add visualstudiocode repository
     apt_repository:
       repo: deb https://tagplus5.github.io/vscode-ppa/ubuntu ./
       state: present
