@@ -33,7 +33,7 @@ vagrant up
 You may want to use the ansible playbook itself to deploy to localhost:
 
 ```sh
-ansible-playbook -i inventory.yml -l localhost playbook.yml --skip-tags vbox --ask-become-pass
+ansible-playbook -i inventory.yml -l localhost playbook.yml --ask-become-pass
 ```
 
 Per default sudo is used for privilege escalation.
