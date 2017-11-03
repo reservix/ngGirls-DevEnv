@@ -1,0 +1,33 @@
+---
+
+#------------------------------------------------------------------------------#
+# install default packages
+#------------------------------------------------------------------------------#
+
+  - name: packages | install ubuntu desktop
+    apt:
+      name: ubuntu-desktop
+      state: present
+    notify: restart lightdm
+
+#------------------------------------------------------------------------------#
+# install default packages
+#------------------------------------------------------------------------------#
+
+  - name: packages | install system tools
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - "{{ default_packages }}"
+
+#------------------------------------------------------------------------------#
+# install default browsers
+#------------------------------------------------------------------------------#
+
+  - name: packages | install webbrowsers
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - "{{ default_browsers }}"

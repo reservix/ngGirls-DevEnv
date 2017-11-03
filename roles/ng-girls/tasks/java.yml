@@ -1,0 +1,43 @@
+---
+
+#------------------------------------------------------------------------------#
+# add apt gpg key for webupd8team java repository
+#------------------------------------------------------------------------------#
+
+  - name: java | insert webupd8team key
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: 7B2C3B0889BF5709A105D03AC2518248EEA14886
+
+#------------------------------------------------------------------------------#
+# add webupd8team java repository
+#------------------------------------------------------------------------------#
+
+  - name: java | add webupd8team java repository
+    apt_repository:
+      repo: deb http://ppa.launchpad.net/webupd8team/java/ubuntu zesty main
+      state: present
+
+#------------------------------------------------------------------------------#
+# preset debconf selections
+#------------------------------------------------------------------------------#
+
+  - name: java | preset configuration values for dpkg
+    debconf:
+      name: "{{ item.name }}"
+      question: "{{ item.question }}"
+      vtype: "{{ item.vtype }}"
+      value: "{{ item.value }}"
+    with_items:
+      - "{{ default_debconf_java8 }}"
+    changed_when: false
+
+#------------------------------------------------------------------------------#
+# install java package
+#------------------------------------------------------------------------------#
+
+  - name: java | install java package non-interactively
+    apt:
+      name: oracle-java8-installer
+      state: present
+      update_cache: true

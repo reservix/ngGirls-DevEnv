@@ -1,0 +1,54 @@
+---
+
+#------------------------------------------------------------------------------#
+# install python-software-properties
+#
+# NOTE: installing "python-software-properties" is important for the latest
+#       nodejs and npm version
+#------------------------------------------------------------------------------#
+
+  - name: nodejs | install python-software-properties
+    apt:
+      name: python-software-properties
+      state: present
+
+#------------------------------------------------------------------------------#
+# add gpg key for nodesource repository
+#------------------------------------------------------------------------------#
+
+  - name: nodejs | insert nodejs repository gpg key
+    apt_key:
+      url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      state: present
+      id: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
+
+#------------------------------------------------------------------------------#
+# add nodesource repository
+#------------------------------------------------------------------------------#
+
+  - name: nodejs | install nodejs repository
+    apt_repository:
+      repo: deb https://deb.nodesource.com/node_7.x zesty main
+      state: present
+
+#------------------------------------------------------------------------------#
+# add nodejs package
+#------------------------------------------------------------------------------#
+
+  - name: nodejs | install nodejs
+    apt:
+      name: nodejs
+      state: present
+      update_cache: true
+
+#------------------------------------------------------------------------------#
+# build default npm packages
+#------------------------------------------------------------------------------#
+
+  - name: nodejs | install angular_cli
+    npm:
+      global: true
+      state: present
+      name: "{{ item }}"
+    with_items:
+      - "{{ default_npm_packages }}"

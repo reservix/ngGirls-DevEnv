@@ -1,0 +1,25 @@
+---
+
+#------------------------------------------------------------------------------#
+# creat default user
+#------------------------------------------------------------------------------#
+
+  - name: users | create default user
+    user:
+      name: "{{ default_user }}"
+      shell: /bin/bash
+      groups: sudo
+      createhome: true
+      state: present
+      append: true
+    register: create_default_user
+
+#------------------------------------------------------------------------------#
+# set password on user creation
+#------------------------------------------------------------------------------#
+
+  - name: users | create default user
+    user:
+      name: "{{ default_user }}"
+      password: "{{ default_password | password_hash('sha512') }}"
+    when: create_default_user.changed

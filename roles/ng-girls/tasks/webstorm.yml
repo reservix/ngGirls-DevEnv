@@ -1,0 +1,56 @@
+---
+
+#------------------------------------------------------------------------------#
+# download and check tarball
+#------------------------------------------------------------------------------#
+
+  - name: webstorm | fetch webstorm tarball from official website
+    get_url:
+      url: "{{ default_webstorm.url }}"
+      dest: /tmp/webstorm.tar.gz
+      mode: 0640
+      checksum: "{{ default_webstorm.checksum }}"
+
+#------------------------------------------------------------------------------#
+# create destination directory
+#------------------------------------------------------------------------------#
+
+  - name: webstorm | create directory in /opt
+    file:
+      dest: /opt/webstorm
+      state: directory
+      mode: 0755
+
+#------------------------------------------------------------------------------#
+# untar webstorm and strip the first directory
+#------------------------------------------------------------------------------#
+
+  - name: webstorm | extract tarball to /opt/webstorm
+    unarchive:
+      src: /tmp/webstorm.tar.gz
+      dest: /opt/webstorm/
+      remote_src: true
+      extra_opts:
+        - "--strip-components=1"
+
+#------------------------------------------------------------------------------#
+# create launcher in unity
+#------------------------------------------------------------------------------#
+
+  - name: webstorm | add launcher
+    blockinfile:
+      content: |
+        [Desktop Entry]
+        Version={{ default_webstorm.version }}
+        Type=Application
+        Name=JetBrains WebStorm
+        Exec=/opt/webstorm/bin/webstorm.sh %f
+        Icon=/opt/webstorm/bin/webstorm.svg
+        Comment=Develop with pleasure!
+        Categories=Development;IDE;
+        Terminal=false
+        StartupNotify=true
+        StartupWMClass=jetbrains-webstorm
+      create: true
+      path: /usr/share/applications/WebStorm.desktop
+      mode: 0644

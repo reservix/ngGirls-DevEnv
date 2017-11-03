@@ -1,0 +1,32 @@
+---
+
+#------------------------------------------------------------------------------#
+# empty the sources.list
+#------------------------------------------------------------------------------#
+
+  - name: apt | remove all standard repositories in sources.list
+    copy:
+      dest: /etc/apt/sources.list
+      content: ''
+      force: true
+    changed_when: false
+
+#------------------------------------------------------------------------------#
+# add ubuntu repositories
+#------------------------------------------------------------------------------#
+
+  - name: apt | add ubuntu repositories
+    apt_repository:
+      repo: "{{ item }}"
+      state: present
+    with_items:
+      - "{{ default_ubuntu_repositories }}"
+
+#------------------------------------------------------------------------------#
+# refresh apt cache
+#------------------------------------------------------------------------------#
+
+  - name: apt | refesh cache
+    apt:
+      update_cache: true
+    changed_when: false

@@ -1,0 +1,14 @@
+---
+
+#------------------------------------------------------------------------------#
+# install vbox guest additions
+#------------------------------------------------------------------------------#
+
+  - name: vbox | install virtualbox essentials
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - virtualbox-guest-dkms
+      - virtualbox-guest-x11
+      - virtualbox-guest-utils

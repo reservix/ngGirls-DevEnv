@@ -1,0 +1,14 @@
+---
+
+#------------------------------------------------------------------------------#
+# playbook for ngGirls host
+#------------------------------------------------------------------------------#
+
+  - hosts: ngGirls
+    become: true
+    roles:
+      - role: ng-girls
+        tags: ng-girls
+      - role: ansible-role-atom-packages
+        tags: apm
+        become_user: "{{ default_user }}"

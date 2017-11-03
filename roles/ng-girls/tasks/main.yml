@@ -1,0 +1,65 @@
+---
+
+#------------------------------------------------------------------------------#
+# apt specific tasks
+#------------------------------------------------------------------------------#
+
+  - name: apt
+    include_tasks: apt.yml
+    tags: apt
+
+#------------------------------------------------------------------------------#
+# virtualbox specific tasks - you may skip this tag
+#------------------------------------------------------------------------------#
+
+  - name: vbox
+    include_tasks: vbox.yml
+    tags: vbox
+
+#------------------------------------------------------------------------------#
+# user specific tasks
+#------------------------------------------------------------------------------#
+
+  - name: users
+    include_tasks: users.yml
+    tags: users
+
+#------------------------------------------------------------------------------#
+# package installations
+#------------------------------------------------------------------------------#
+
+  - name: packages
+    include_tasks: packages.yml
+    tags: packages
+
+  - name: nodejs
+    include_tasks: nodejs.yml
+    tags: nodejs
+
+#------------------------------------------------------------------------------#
+# editor installations
+#------------------------------------------------------------------------------#
+
+  - name: atom
+    include_tasks: atom.yml
+    tags: atom
+
+  - name: java
+    include_tasks: java.yml
+    tags: java
+
+  - name: webstorm
+    include_tasks: webstorm.yml
+    tags: webstorm
+
+  - name: visualstudiocode
+    include_tasks: visualstudiocode.yml
+    tags: visualstudiocode
+
+#------------------------------------------------------------------------------#
+# webserver tasks
+#------------------------------------------------------------------------------#
+
+  - name: nginx
+    include_tasks: nginx.yml
+    tags: nginx

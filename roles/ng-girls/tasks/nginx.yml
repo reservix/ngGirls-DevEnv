@@ -1,0 +1,38 @@
+---
+
+#------------------------------------------------------------------------------#
+# install nginx package
+#------------------------------------------------------------------------------#
+
+  - name: nginx | install packages
+    apt:
+      name: nginx
+      state: present
+
+#------------------------------------------------------------------------------#
+# adjust permissions in /var/www/html
+#------------------------------------------------------------------------------#
+
+  - name: nginx | grant read/write permissions on /var/www/html to default user
+    file:
+      path: /var/www/html
+      owner: www-data
+      group: www-data
+      mode: 2770
+
+  - name: nginx | grant write permissions on index file to default user
+    file:
+      path: /var/www/html/index.nginx-debian.html
+      owner: www-data
+      group: www-data
+      mode: 0660
+
+#------------------------------------------------------------------------------#
+# add default user to www-data group
+#------------------------------------------------------------------------------#
+
+  - name: nginx | add default user to www-data
+    user:
+      name: "{{ default_user }}"
+      groups: www-data
+      append: true
