@@ -18,7 +18,7 @@
 # set password on user creation
 #------------------------------------------------------------------------------#
 
-  - name: users | create default user
+  - name: users | set password for default user
     user:
       name: "{{ default_user }}"
       password: "{{ default_password | password_hash('sha512') }}"
