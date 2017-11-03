@@ -16,7 +16,7 @@
     include_tasks: vbox.yml
     tags: vbox
     when:
-      - inventory_host != "localhost"
+      - inventory_hostname != "localhost"
 
 #------------------------------------------------------------------------------#
 # user specific tasks
