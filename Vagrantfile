@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
 
   # install python
   config.vm.provision "shell",
-    inline: "export DEBIAN_FRONTEND=noninteractive apt install python"
+    inline: "export DEBIAN_FRONTEND=noninteractive; apt -y install python"
 
   # run ansible
   config.vm.provision "ansible" do |ansible|
