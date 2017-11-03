@@ -1,0 +1,10 @@
+virtualbox:
+  hosts:
+    vm:
+      ansible_ssh_host: 10.5.23.42
+      ansible_ssh_user: ubuntu
+
+local:
+  hosts:
+    localhost:
+      connection: local

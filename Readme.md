@@ -11,7 +11,7 @@ It creates a VirtualBox Image via vagrant and provisions all required software i
 On Debian/Ubuntu you may just run the following commands:
 
 ```sh
-apt install vagrant virtualbox
+apt install vagrant virtualbox pip
 pip install ansible
 ```
 
@@ -30,10 +30,12 @@ vagrant up
 ```
 
 #### Ansible
-You may want to use the ansible playbook itself:
+You may want to use the ansible playbook itself to deploy to localhost:
 
 ```sh
-ansible-playbook -i inventory playbook.yml -e "ansible_ssh_host=10.5.23.42 ansible_ssh_user=ngGirl" --skip-tags vbox --ask-pass --ask-become-pass
+ansible-playbook -i inventory.yml playbook.yml -l localhost --skip-tags vbox --ask-become-pass
 ```
+
+Per default sudo is used for privilege escalation.
 
 Please have a look at http://docs.ansible.com/ansible/latest/become.html for available become methods.

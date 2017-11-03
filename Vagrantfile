@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
   # run ansible
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
-    ansible.inventory_path = "inventory"
-    ansible.sudo = true
+    ansible.inventory_path = "inventory.yml"
+    ansible.limit = "vm"
   end
 end

@@ -1,10 +1,23 @@
 ---
 
 #------------------------------------------------------------------------------#
-# playbook for ngGirls host
+# playbook for ngGirls virtualbox
 #------------------------------------------------------------------------------#
 
-  - hosts: ngGirls
+  - hosts: vm
+    become: true
+    roles:
+      - role: ng-girls
+        tags: ng-girls
+      - role: ansible-role-atom-packages
+        tags: apm
+        become_user: "{{ default_user }}"
+
+#------------------------------------------------------------------------------#
+# playbook for ngGirls localhost
+#------------------------------------------------------------------------------#
+
+  - hosts: localhost
     become: true
     roles:
       - role: ng-girls
