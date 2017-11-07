@@ -16,7 +16,6 @@ pip install ansible
 ```
 
 ### Preparation
-
 ```sh
 git clone https://github.com/Reservix/ngGirls-DevEnv.git
 git submodule update --init --recursive
@@ -24,7 +23,6 @@ git submodule update --init --recursive
 
 ### Usage
 #### VirtualBox
-
 ```sh
 vagrant up
 ```
@@ -39,3 +37,8 @@ ansible-playbook -i inventory.yml -l localhost playbook.yml --ask-become-pass
 Per default sudo is used for privilege escalation.
 
 Please have a look at http://docs.ansible.com/ansible/latest/become.html for available become methods.
+
+## Credits
+
+Implementation by Max Jaeger (Working Student)  
+Elaboration by Michael Gerlach (DevOps Engineer)
