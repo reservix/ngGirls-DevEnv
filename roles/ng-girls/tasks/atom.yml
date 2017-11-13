@@ -15,7 +15,7 @@
 
   - name: atom | add webupd8team atom repository
     apt_repository:
-      repo: deb http://ppa.launchpad.net/webupd8team/atom/ubuntu zesty main
+      repo: deb http://ppa.launchpad.net/webupd8team/atom/ubuntu xenial main
       state: present
 
 #------------------------------------------------------------------------------#

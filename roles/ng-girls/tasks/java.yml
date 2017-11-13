@@ -15,7 +15,7 @@
 
   - name: java | add webupd8team java repository
     apt_repository:
-      repo: deb http://ppa.launchpad.net/webupd8team/java/ubuntu zesty main
+      repo: deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
       state: present
 
 #------------------------------------------------------------------------------#

@@ -28,7 +28,7 @@
 
   - name: nodejs | add nodejs repository
     apt_repository:
-      repo: deb https://deb.nodesource.com/node_7.x zesty main
+      repo: deb https://deb.nodesource.com/node_7.x xenial main
       state: present
 
 #------------------------------------------------------------------------------#
