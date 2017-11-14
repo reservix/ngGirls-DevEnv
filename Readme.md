@@ -42,3 +42,4 @@ Please have a look at http://docs.ansible.com/ansible/latest/become.html for ava
 
 Implementation by Max Jaeger (Working Student)  
 Elaboration by Michael Gerlach (DevOps Engineer)
+Head of Mate Support by Micha Lerch (Database Administrator)
